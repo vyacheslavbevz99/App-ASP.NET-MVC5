@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MvcApplication", "MvcApplication\MvcApplication.vbproj", "{F4F0D2DB-D8FB-4862-BEA0-C0928712C6F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCApplication (CSharp)", "MVCApplication (CSharp)\MVCApplication (CSharp).csproj", "{468455DF-8688-49E3-AB5E-93C512F02AA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BockingAppStore", "BockingAppStore\BockingAppStore.csproj", "{4E04CDFC-0ACE-4BEA-861B-0E0FD7522A6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F4F0D2DB-D8FB-4862-BEA0-C0928712C6F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4F0D2DB-D8FB-4862-BEA0-C0928712C6F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4F0D2DB-D8FB-4862-BEA0-C0928712C6F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4F0D2DB-D8FB-4862-BEA0-C0928712C6F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{468455DF-8688-49E3-AB5E-93C512F02AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{468455DF-8688-49E3-AB5E-93C512F02AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{468455DF-8688-49E3-AB5E-93C512F02AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{468455DF-8688-49E3-AB5E-93C512F02AA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E04CDFC-0ACE-4BEA-861B-0E0FD7522A6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E04CDFC-0ACE-4BEA-861B-0E0FD7522A6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E04CDFC-0ACE-4BEA-861B-0E0FD7522A6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E04CDFC-0ACE-4BEA-861B-0E0FD7522A6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
