@@ -1,7 +1,9 @@
 ﻿using BockingAppStore.Models;
+using BockingAppStore.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,6 +17,15 @@ namespace BockingAppStore.Controllers
             IEnumerable<Book> books = db.Books;
             ViewBag.Books = books;
             return View();
+        }
+
+        public ActionResult GetImage(){
+            string path = "../Content/Images/tattoo.png";
+            return new ImageResult(path);
+
+        }
+        public ActionResult GetHtml(){
+            return new HtmlResult("<h2> Hey World!</h2>");
         }
 
         [HttpGet]
@@ -58,13 +69,21 @@ namespace BockingAppStore.Controllers
             return View();
         }
 
+        //[HttpPost]
+        //public string PostBook()
+        //{
+        //    string title = Request.Form["title"];
+        //    string author = Request.Form["author"];
+        //    return title +" "+ author;
+        //}
         [HttpPost]
-        public string PostBook()
+        public ContentResult PostBook()
         {
             string title = Request.Form["title"];
             string author = Request.Form["author"];
-            return title +" "+ author;
+            return Content(title + " " + author);
         }
+
 
         public string GetId(int id)
         {
