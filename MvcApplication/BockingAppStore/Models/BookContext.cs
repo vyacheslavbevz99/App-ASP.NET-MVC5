@@ -17,6 +17,10 @@ namespace BockingAppStore.Models
             db.Books.Add( new Book { Name = "Война и мир", Author="Лев Толстой", Price= 300});
             db.Books.Add( new Book { Name = "Финансист", Author = "Теодор Драйзер", Price = 200 });
             db.Books.Add( new Book { Name = "Чайка", Author = "Чехов", Price = 250 });
+            db.Books.Add(new Book { Name = "Нью-Йорк", Author = "Э. Резерфорд", Price = 400 });
+
+
         }
+
     }
 }
