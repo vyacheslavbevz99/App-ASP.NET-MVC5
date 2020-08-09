@@ -16,7 +16,17 @@ namespace BockingAppStore.Controllers
         {
             IEnumerable<Book> books = db.Books;
             ViewBag.Books = books;
+
+            ViewData["Head"] = "Hello World!";
+            ViewBag.Head1 = "Hey all";
+            ViewBag.Fruit = new List<string>{
+            "яблоки", "сливы", "груши"
+            };
+
             return View();
+
+            //переопределение представления
+            //return View("~/Views/Some/Index.cshtml");
         }
 
         public ActionResult GetImage(){

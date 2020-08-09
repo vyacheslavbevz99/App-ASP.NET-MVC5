@@ -24,3 +24,12 @@
         }
     </table>
 </div>
+
+<h2>@ViewData["Head"]</h2>
+<h2>@ViewBag.Head1</h2>
+<ul>
+    @foreach (string s in ViewBag.Fruit)
+    {
+        <li>@s</li>
+    }
+</ul>
