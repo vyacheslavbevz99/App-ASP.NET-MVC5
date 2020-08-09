@@ -38,6 +38,21 @@ namespace BockingAppStore.Controllers
             return new HtmlResult("<h2> Hey World!</h2>");
         }
 
+        //http://localhost:60958/home/getvoid?id=7
+        public ActionResult GetVoid(int id){
+            // тест redirect
+            //return RedirectPermanent("~/Home/Contact");
+            if( id >3){
+                //return Redirect("~/Home/Contact");
+                //return RedirectToRoute(new { controller = "Home", action = "Contact" } );
+                //return RedirectToAction("Square", "Home", new { a = 10, h = 7 });
+                //return new HttpStatusCodeResult(404);
+                //return HttpNotFound();
+                return new HttpUnauthorizedResult();
+            }
+
+            return View("About");
+        }
         [HttpGet]
         public ActionResult Buy(int id)
         {
