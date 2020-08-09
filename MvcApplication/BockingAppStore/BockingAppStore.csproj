@@ -147,6 +147,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\tattoo.png" />
     <Content Include="favicon.ico" />
+    <Content Include="Files\18.PNG" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

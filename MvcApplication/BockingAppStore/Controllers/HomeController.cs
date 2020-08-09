@@ -2,6 +2,7 @@
 using BockingAppStore.Util;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
@@ -12,6 +13,36 @@ namespace BockingAppStore.Controllers
     public class HomeController : Controller
     {
         BookContext db = new BookContext();
+
+        public FilePathResult GetFile()
+        {
+            //путь к файлу
+            string filePath = Server.MapPath("~/Files/18.png");
+            //Тип файла
+            //string fileType = "application/png";
+            //универсальный тип файла octet-stream
+            string fileType = "application/octet-stream";
+            // Имя файла
+            string fileName = "18.png";
+            return File(filePath, fileType, fileName);
+        }
+
+        public FileContentResult GetBytes(){
+            string path = Server.MapPath("~/Files/18.png");
+            byte[] mas = System.IO.File.ReadAllBytes(path);
+            string fileType = "aplication/png";
+            string fileName = "18.png";
+            return File(mas, fileType, fileName);
+        }
+
+        public FileStreamResult GetStream(){
+            string filePath = Server.MapPath("~/Files/18.png");
+            // Обьект Stream
+            FileStream fs = new FileStream(filePath, FileMode.Open);
+            string fileType = "aplication/png";
+            string fileName = "18.png";
+            return File(fs, fileType, fileName);
+        }
         public ActionResult Index()
         {
             IEnumerable<Book> books = db.Books;
@@ -29,20 +60,24 @@ namespace BockingAppStore.Controllers
             //return View("~/Views/Some/Index.cshtml");
         }
 
-        public ActionResult GetImage(){
+        public ActionResult GetImage()
+        {
             string path = "../Content/Images/tattoo.png";
             return new ImageResult(path);
 
         }
-        public ActionResult GetHtml(){
+        public ActionResult GetHtml()
+        {
             return new HtmlResult("<h2> Hey World!</h2>");
         }
 
         //http://localhost:60958/home/getvoid?id=7
-        public ActionResult GetVoid(int id){
+        public ActionResult GetVoid(int id)
+        {
             // тест redirect
             //return RedirectPermanent("~/Home/Contact");
-            if( id >3){
+            if (id > 3)
+            {
                 //return Redirect("~/Home/Contact");
                 //return RedirectToRoute(new { controller = "Home", action = "Contact" } );
                 //return RedirectToAction("Square", "Home", new { a = 10, h = 7 });
