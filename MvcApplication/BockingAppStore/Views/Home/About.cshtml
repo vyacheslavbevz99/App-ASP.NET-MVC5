@@ -1,7 +1,20 @@
 ﻿@{
     ViewBag.Title = "About";
+    int i = 10;
+    List<string> someFruits = new List<string> { "слива", "груша", "яблоки" };
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+<h3>Время: @DateTime.Now.ToShortTimeString()</h3>
+<p>@i++</p>
+@if (i <= 5)
+{<p>I <= 5</p>}
+else
+{
+   <p>i больше 5-ти</p> }
+
+@foreach( string a in someFruits){
+<p>@a</p>
+}

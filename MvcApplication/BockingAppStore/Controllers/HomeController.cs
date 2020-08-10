@@ -15,6 +15,9 @@ namespace BockingAppStore.Controllers
     public class HomeController : Controller
     {
         BookContext db = new BookContext();
+        public ActionResult SomeIndex(){
+            return View("~/Views/Some/SomeView.cshtml");
+        }
         public ActionResult Index()
         {
             IEnumerable<Book> books = db.Books.ToList();
