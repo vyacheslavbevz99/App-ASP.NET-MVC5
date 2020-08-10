@@ -13,7 +13,23 @@ namespace BockingAppStore.Controllers
     public class HomeController : Controller
     {
         BookContext db = new BookContext();
-
+        public string GetCookiesAndSession(){
+            string id = HttpContext.Request.Cookies["id"].Value;
+            var nameSession = Session["name"];
+            return "<p> Id: " + id.ToString() + "</p><p> Session name: " + nameSession.ToString() + "</p>";
+        }
+        public void GetContext()
+        {
+            HttpContext.Response.Write("Привет мир!");
+            string browser = HttpContext.Request.Browser.Browser;
+            string userAgent = HttpContext.Request.UserAgent;
+            string url = HttpContext.Request.RawUrl;
+            string ip = HttpContext.Request.UserHostAddress;
+            //string cokies = HttpContext.Request.Cookies;
+            string referrer = HttpContext.Request.UrlReferrer == null ? "" : HttpContext.Request.UrlReferrer.AbsoluteUri;
+            HttpContext.Response.Write( "<p>Browser: " + browser + "</p><p>User Agent: " + userAgent + "</p><p>Url: " + url
+            + "</p><p>Ip-адрес: " + ip + "</p><p>Referrer: " + referrer + "</p>");
+        }
         public FilePathResult GetFile()
         {
             //путь к файлу
@@ -27,7 +43,8 @@ namespace BockingAppStore.Controllers
             return File(filePath, fileType, fileName);
         }
 
-        public FileContentResult GetBytes(){
+        public FileContentResult GetBytes()
+        {
             string path = Server.MapPath("~/Files/18.png");
             byte[] mas = System.IO.File.ReadAllBytes(path);
             string fileType = "aplication/png";
@@ -35,7 +52,8 @@ namespace BockingAppStore.Controllers
             return File(mas, fileType, fileName);
         }
 
-        public FileStreamResult GetStream(){
+        public FileStreamResult GetStream()
+        {
             string filePath = Server.MapPath("~/Files/18.png");
             // Обьект Stream
             FileStream fs = new FileStream(filePath, FileMode.Open);
@@ -45,6 +63,8 @@ namespace BockingAppStore.Controllers
         }
         public ActionResult Index()
         {
+            Session["name"] = "Tom";
+            HttpContext.Response.Cookies["id"].Value = "ca-1300w";
             IEnumerable<Book> books = db.Books;
             ViewBag.Books = books;
 
