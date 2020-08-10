@@ -21,7 +21,7 @@ namespace BockingAppStore.Controllers
         public ActionResult Index()
         {
             IEnumerable<Book> books = db.Books.ToList();
-            ViewBag.Books = books;
+            //ViewBag.Books = books;
 
 
 
@@ -31,13 +31,22 @@ namespace BockingAppStore.Controllers
             ViewBag.Fruit = new List<string>{
             "яблоки", "сливы", "груши"
             };
-            return View();
+            return View(books);
             //сессии и куки
             /*Session["name"] = "Tom";
             HttpContext.Response.Cookies["id"].Value = "ca-1300w";*/
             //переопределение представления
             //return View("~/Views/Some/Index.cshtml");
         }
+
+        public ActionResult BookIndex()
+        {
+            IEnumerable<Book> books = db.Books.ToList();
+            //ViewBag.Books = books;
+            return View(books);
+        }
+
+        //асинхронный метод
         public async Task<ActionResult> BookList()
         {
             IEnumerable<Book> books = await db.Books.ToListAsync();
