@@ -2,9 +2,11 @@
 using BockingAppStore.Util;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,7 +15,34 @@ namespace BockingAppStore.Controllers
     public class HomeController : Controller
     {
         BookContext db = new BookContext();
-        public string GetCookiesAndSession(){
+        public ActionResult Index()
+        {
+            IEnumerable<Book> books = db.Books.ToList();
+            ViewBag.Books = books;
+
+
+
+
+            ViewData["Head"] = "Hello World!";
+            ViewBag.Head1 = "Hey all";
+            ViewBag.Fruit = new List<string>{
+            "яблоки", "сливы", "груши"
+            };
+            return View();
+            //сессии и куки
+            /*Session["name"] = "Tom";
+            HttpContext.Response.Cookies["id"].Value = "ca-1300w";*/
+            //переопределение представления
+            //return View("~/Views/Some/Index.cshtml");
+        }
+        public async Task<ActionResult> BookList()
+        {
+            IEnumerable<Book> books = await db.Books.ToListAsync();
+            ViewBag.Books = books;
+            return View("Index");
+        }
+        public string GetCookiesAndSession()
+        {
             string id = HttpContext.Request.Cookies["id"].Value;
             var nameSession = Session["name"];
             return "<p> Id: " + id.ToString() + "</p><p> Session name: " + nameSession.ToString() + "</p>";
@@ -27,7 +56,7 @@ namespace BockingAppStore.Controllers
             string ip = HttpContext.Request.UserHostAddress;
             //string cokies = HttpContext.Request.Cookies;
             string referrer = HttpContext.Request.UrlReferrer == null ? "" : HttpContext.Request.UrlReferrer.AbsoluteUri;
-            HttpContext.Response.Write( "<p>Browser: " + browser + "</p><p>User Agent: " + userAgent + "</p><p>Url: " + url
+            HttpContext.Response.Write("<p>Browser: " + browser + "</p><p>User Agent: " + userAgent + "</p><p>Url: " + url
             + "</p><p>Ip-адрес: " + ip + "</p><p>Referrer: " + referrer + "</p>");
         }
         public FilePathResult GetFile()
@@ -60,24 +89,6 @@ namespace BockingAppStore.Controllers
             string fileType = "aplication/png";
             string fileName = "18.png";
             return File(fs, fileType, fileName);
-        }
-        public ActionResult Index()
-        {
-            Session["name"] = "Tom";
-            HttpContext.Response.Cookies["id"].Value = "ca-1300w";
-            IEnumerable<Book> books = db.Books;
-            ViewBag.Books = books;
-
-            ViewData["Head"] = "Hello World!";
-            ViewBag.Head1 = "Hey all";
-            ViewBag.Fruit = new List<string>{
-            "яблоки", "сливы", "груши"
-            };
-
-            return View();
-
-            //переопределение представления
-            //return View("~/Views/Some/Index.cshtml");
         }
 
         public ActionResult GetImage()
