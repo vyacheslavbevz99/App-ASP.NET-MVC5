@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BockingAppStore.Models.Book>
+﻿@using BockingAppStore.Models
+@model IEnumerable<Book>
 @{
     ViewBag.Title = "Книжный Магазин";
 }
@@ -14,7 +15,7 @@
             <td><p>Цена</p></td>
             <td></td>
         </tr>
-        @foreach(BockingAppStore.Models.Book b in Model)
+        @foreach(Book b in Model)
         {
             <tr>
                 <td><p>@b.Name</p></td>
